@@ -8,8 +8,6 @@
 # find /home/*/public_html/ -type f -iwholename "*/version.php" -exec grep -H "\$CMS_VERSION = \"" {} \;
 # (https://kb.iweb.com/entries/29801848-Verifying-CMS-versions-on-multiple-websites)
 
-set foo [exec grep "^\$CMS_VERSION = .*;" version.php]
-
 # run from home directory as root in tclsh
 # After finishing, puts $CSV prints output
 set count 0
@@ -29,8 +27,8 @@ foreach dir [glob -type d *] {
     set version [exec drush status | head -1]
     if {[lindex $version 0] == "Drupal"} {
       puts "This one's Drupal"
-      lappend versionList "$dir: $version"
-      lappend drupalList "$dir: $version"
+      #lappend versionList "$dir: $version"
+      #lappend drupalList "$dir: $version"
       # Version gives us something like NAME: X.X.X; all we care about is the last bit
       # Get the length and then take the item at the last index (remember, Tcl is zero-indexed)
       set length [llength $version]
@@ -73,11 +71,11 @@ foreach dir [glob -type d *] {
   }
 }
 
-proc printOut {versionList cmsName} {
-  foreach item $versionList {
-    set length [llength $item]
-    set name [lindex $item 0]
-    set version [lindex $item [expr $length - 1]]
-    puts "$name $cmsName $version"
-  }
-}
+# Not currently used
+# proc printOut {versionList cmsName} {
+#   foreach item $versionList {
+#    set length [llength $item]
+#    set name [lindex $item 0]
+#    set version [lindex $item [expr $length - 1]]
+#    puts "$name $cmsName $version"
+#  }
