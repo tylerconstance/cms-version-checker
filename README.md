@@ -20,8 +20,13 @@ A future update could also involve handling SSH-ing into each server so the scri
 If you just need version numbers quickly, you can string together a few bash commands. From [this site](https://kb.iweb.com/entries/29801848-Verifying-CMS-versions-on-multiple-websites), try something like these:
 
 \# Get Wordpress versions
+
 find /home/*/public_html/ -type f -iwholename "*/wp-includes/version.php" -exec grep -H "\$wp_version =" {} \;
+
 \# Get Drupal versions
+
 find /home/*/public_html/ -type f -iwholename "*/modules/system/system.info" -exec grep -H "version = \"" {} \;
+
 \# Get CMSMS verisons
+
 find /home/*/public_html/ -type f -iwholename "*/version.php" -exec grep -H "\$CMS_VERSION = \"" {} \;
