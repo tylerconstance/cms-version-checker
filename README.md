@@ -15,6 +15,8 @@ This was written quickly, and there's lots of room for improvement.
 
 Currently, the script's not set up to be executable. Feel free to add the proper shebang to the top of the file, put it in the directory you like, and chmod u+x so it can be executed. It'll also be nice to write out to a proper CSV file instead of setting a variable. Also, we're not going through directories recursively, so if your CMS isn't in the top-level account directory and is somewhere else, e.g., accountname/blog/, the script won't find anything.
 
+It's possible that this script chokes on a few Drupal accounts. If it does, you can add exceptions in the if statement on line 24. If the script breaks, it also probably won't be in the right directory, so ```pwd``` and see where you are.
+
 A future update could also involve handling SSH-ing into each server so the script can be run from anywhere, and would ultimately return a .CSV file in the same directory. That would be sweet, but I can only sink so much time into this, haha.
 
 If you just need version numbers quickly, you can string together a few bash commands. From [this site](https://kb.iweb.com/entries/29801848-Verifying-CMS-versions-on-multiple-websites), try something like these:
