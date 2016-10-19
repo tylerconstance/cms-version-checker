@@ -8,7 +8,7 @@
 # find /home/*/public_html/ -type f -iwholename "*/version.php" -exec grep -H "\$CMS_VERSION = \"" {} \;
 # (https://kb.iweb.com/entries/29801848-Verifying-CMS-versions-on-multiple-websites)
 
-# run from home directory as root in tclsh
+# run from home directory as root in tclsh (../home). Running "ls" should print out a list of all the accounts
 # After finishing, puts $CSV prints output
 set count 0
 set versionList ""
@@ -21,7 +21,7 @@ foreach dir [glob -type d *] {
 puts "Okay, let's begin."
 foreach dir [glob -type d *] {
   puts "Looking at $dir..."
-  if { [file isdirectory $dir/public_html] && $dir != "devdayibec" && $dir != "museum2"} {
+  if { [file isdirectory $dir/public_html] && $dir != "devdayibec" && $dir != "museum2" && $dir != "museum"} {
     cd $dir/public_html
     # Try Drupal
     set version [exec drush status | head -1]
